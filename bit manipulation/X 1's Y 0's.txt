@@ -1,0 +1,5 @@
+t=int(input())
+for i in range(t):
+    a,b=map(int,input().split())
+    rem=((1<<a)-1<<b)
+    print(rem%1000000007)
