@@ -1,0 +1,19 @@
+MOD=1000000007
+def cnt_subseq(arr):
+    n=len(arr)
+    dp=[0]*n
+    total_cnt=0
+    for i in range(n):
+        dp[i]=1
+        for j in range(i):
+            if arr[i]>=arr[j]:
+                dp[i]+=dp[j]
+                dp[i]%=MOD
+        total_cnt+=dp[i]
+        total_cnt%=MOD
+    return total_cnt
+for t in range(int(input())):
+    n=int(input())
+    el=list(map(int,input().split()))
+    res=cnt_subseq(el)
+    print(res)
