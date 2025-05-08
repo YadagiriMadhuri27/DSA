@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+class Node{
+    int data;
+    Node right;
+    Node left;
+    public Node(int data){
+        this.data=data;
+        left=right=null;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            int n=sc.nextInt();
+            int ar[]=new int[n];
+            for(int i=0;i<n;i++){
+                ar[i]=sc.nextInt();
+            }
+            Node root=null;
+            for(int i=0;i<n;i++){
+                root=insert(root,ar[i],0);
+            }
+            System.out.println();
+        }
+        
+    }
+    public static Node insert(Node root,int x,int d){
+        if(root==null){
+            System.out.print(d+" ");
+            return new Node(x);
+        }
+        if(root.data<x){
+            root.right=insert(root.right,x,d+1);
+        }
+        else{
+            root.left=insert(root.left,x,d+1);
+        }
+        return root;
+    } 
+}
