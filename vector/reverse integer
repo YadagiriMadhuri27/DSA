@@ -1,0 +1,19 @@
+class Solution {
+    public int reverse(int x) {
+        long Fnum=0;
+        while(x!=0){
+            int rem=x%10;
+            Fnum+=rem;
+            Fnum=Fnum*10;
+            x=x/10;
+        }
+        Fnum=Fnum/10;
+        if(Fnum>Integer.MAX_VALUE || Fnum<Integer.MIN_VALUE){
+            return 0;
+        }
+        if(x<0){
+            return (int)(-1*Fnum);
+        }
+        return (int)Fnum;
+    }
+}
