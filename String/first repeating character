@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        for(int k=0;k<t;k++){
+            String s=sc.next();
+            HashMap<Character,Integer>hm=new HashMap<>();
+            for(int i=0;i<s.length();i++){
+                if(hm.containsKey(s.charAt(i))){
+                    hm.put(s.charAt(i),s.charAt(i)+1);
+                }
+                else{
+                    hm.put(s.charAt(i),1);
+                }
+            }
+            int cnt=0;
+            for(int i=0;i<s.length();i++){
+                if(hm.get(s.charAt(i))>1){
+                    System.out.println(s.charAt(i));
+                    cnt++;
+                    break;
+                }
+            }
+            if(cnt==0)
+            System.out.println(".");
+        }
+    }
+}
