@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+class Node{
+    int data;
+    Node right;
+    Node left;
+    public Node(int data){
+        this.data=data;
+        left=right=null;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            int n=sc.nextInt();
+            int ar[]=new int[n];
+            for(int j=0;j<n;j++){
+                ar[j]=sc.nextInt();
+            }
+            Node root=null;
+            for(int i=0;i<n;i++){
+                root=insert(root,ar[i]);
+            }
+            System.out.println(HeightofTree(root));
+        }
+    }
+    public static Node insert(Node root,int x){
+        if(root==null){
+            return new Node(x);
+        }
+        if(root.data<x){
+            root.right=insert(root.right,x);
+        }
+        else{
+            root.left=insert(root.left,x);
+        }
+        return root;
+    }
+    public static int HeightofTree(Node root){
+        if(root==null){
+            return -1;
+        }
+        int leftHeight=HeightofTree(root.left);
+        int rightHeight=HeightofTree(root.right);
+        return Math.max(leftHeight,rightHeight)+1;
+    }   
+}
