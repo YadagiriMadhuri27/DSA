@@ -1,0 +1,38 @@
+class Solution {
+    public int findMinimumOperations(String s1, String s2, String s3) {
+        int a=s1.length(),b=s2.length(),c=s3.length();
+        int arr[]={a,b,c};
+        Arrays.sort(arr);
+        int small=arr[0];
+        int ans2=0;
+        if(small<1)
+            return -1;
+        else{
+            for(int i=0;i<small;i++){
+                char fir=s1.charAt(i);
+                char sec=s2.charAt(i);
+                char th=s3.charAt(i);
+                
+                if(fir==sec && sec==th){
+                    if(i==small-1){
+                        int df=arr[1]-arr[0];
+                        int df2=arr[2]-arr[0];
+                        ans2=df+df2;
+                    }
+                }else{
+                    if(i==0){
+                        ans2=-1;
+                    }else{
+                        int df=arr[1]-i;
+                        int df2=arr[2]-i;
+                        ans2=df+df2;
+                        int df3=arr[0]-i;
+                        ans2+=df3;
+                    }
+                    break;
+                }
+            }
+            return ans2;
+        }
+    }
+}
