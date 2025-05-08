@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            int n=sc.nextInt();
+            int arr[]=new int[n];
+            for(int i=0;i<n;i++){
+                arr[i]=sc.nextInt();
+            }
+            int p1=0,p2=n-1;
+            while(p1<p2){
+                if(arr[p1]==0){
+                    p1++;
+                }
+                else if(arr[p2]==1){
+                    p2--;
+                }
+                if(arr[p1]==1 && arr[p2]==0){
+                    int temp=arr[p2];
+                    arr[p2]=arr[p1];
+                    arr[p1]=temp;
+                }
+            }
+            for(int i=0;i<n;i++){
+                System.out.print(arr[i]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
