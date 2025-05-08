@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        long a[]=new long[n];
+        for(int j=0;j<n;j++){
+            a[j]=sc.nextInt();
+        }
+        long c[]=new long[n];
+        c[0]=a[0];
+        for(int i=1;i<n;i++){
+            c[i]=c[i-1]+a[i];
+        }
+        int q=sc.nextInt();
+        for(int k=0;k<q;k++){
+            int f=sc.nextInt();
+            int l=sc.nextInt();
+            long sum=c[l]-(f==0 ? 0:c[f-1]);
+            System.out.println(sum);
+        }
+    }
+}
