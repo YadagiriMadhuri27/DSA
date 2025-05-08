@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            int n=sc.nextInt();
+            long ar[]=new long[n];
+            for(int i=0;i<n;i++){
+                ar[i]=sc.nextLong();
+            }
+            long dp[]=new long[n];
+            long m=Integer.MIN_VALUE;
+            dp[0]=ar[0];
+            for(int i=1;i<n;i++){
+                dp[i]=Math.max(ar[i],m+ar[i]);
+                m=Math.max(dp[i-1],m);
+            }
+            long ans=Integer.MIN_VALUE;
+            for(int i=0;i<n;i++){
+                ans=Math.max(dp[i],ans);
+            }
+            System.out.println(ans);
+        }
+    }
+}
