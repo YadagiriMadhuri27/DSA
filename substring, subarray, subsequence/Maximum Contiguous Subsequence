@@ -1,0 +1,17 @@
+def lc(a):
+    v=set(a)
+    max_len=0
+    for num in a:
+        if num-1 not in v:
+            len=1
+            next_num=num+1
+            while next_num in v:
+                len+=1
+                next_num+=1
+            max_len=max(max_len,len)
+    return max_len
+for _ in range(int(input())):
+    n=int(input())
+    c=list(map(int,input().split()))
+    r=lc(c)
+    print(r)
