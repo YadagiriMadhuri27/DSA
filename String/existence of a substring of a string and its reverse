@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isSubstringPresent(String s) {
+        
+        for (int i = 0; i < s.length() - 1; i++) {
+            String substring = s.substring(i, i + 2);
+            if (s.contains(new StringBuilder(substring).reverse())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        
+        System.out.println(solution.isSubstringPresent("leetcode"));  
+        System.out.println(solution.isSubstringPresent("abcba"));    
+        System.out.println(solution.isSubstringPresent("abcd"));      
+    }
+}
